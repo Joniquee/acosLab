@@ -3,11 +3,11 @@ import time
 
 host = '127.0.0.1'
 port = 8080
-client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 try:
     while True:
         status = 1  # статус подключенности к серверу
         # проверка на подключение
+        client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         try:
             client.connect((host, port))
         except Exception as e:
@@ -39,8 +39,5 @@ try:
 
             except Exception as e:
                 print(e)
-except KeyboardInterrupt:
+except KeyboardInterrupt as ke:
     print("Клиент остановлен вручную.")
-finally:
-    client.close()
-    print("Клиент завершил работу.")
